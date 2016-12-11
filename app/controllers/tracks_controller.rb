@@ -1,28 +1,29 @@
 class TracksController < ApplicationController
+  before_action :logged_in?
+
   def new
-    @album = Album.find(params[:album_id])
-    # fail
-    @track = Track.new
-    render :new
+
   end
 
   def show
     @track = Track.find(params[:id])
-    render :show
   end
 
   def create
-    track = Track.new(track_params)
-    if track.save
-      redirect_to track_url(track)
+    @track = Track.new(track_params)
+    @track.album_id = params[:album_id]
+
+    if @track.save
+      redirect_to track_url(@track)
     else
-      flash.now[:errors] = track.errors.full_messages
-      render track_url(track)
+      flash.now[:errors] = @track.errors.full_messages
+      render :new
     end
   end
 
   def update
     @track = Track.find(params[:id])
+
     if @track.update_attributes(track_params)
       redirect_to track_url(@track)
     else
@@ -33,7 +34,6 @@ class TracksController < ApplicationController
 
   def edit
     @track = Track.find(params[:id])
-    render :edit
   end
 
   def destroy
@@ -44,6 +44,6 @@ class TracksController < ApplicationController
 
   private
   def track_params
-    params.require(:track).permit(:name, :lyrics, :status, :album_id)
+    params.require(:track).permit(:name, :lyrics, :status)
   end
 end

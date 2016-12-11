@@ -1,14 +1,19 @@
-<h3>Edit Album</h3>
+<h1>Edit Album</h1>
+
 <form action="<%= album_url(@album) %>" method="post">
   <input type="hidden" name="_method" value="patch">
-  <label for="name">Name:
+  <%= auth_token %>
+
+  <label for="name">
+    Name:
     <input id="name" type="text" name="album[name]" value="<%= @album.name %>">
   </label>
 
   <br>
   <br>
 
-  <label for="quality">Quality:
+  <label for="quality">
+    Quality:
     Live<input id="quality" type="radio" name="album[quality]" <%= @album.quality == "Live" ? "checked" : "" %> value="Live">
     Studio<input id="quality" type="radio" name="album[quality]" <%= @album.quality == "Studio" ? "checked" : "" %> value="Studio">
   </label>

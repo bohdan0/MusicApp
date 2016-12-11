@@ -1,21 +1,26 @@
-<h3>New Track</h3>
-<form action="<%= tracks_url %>" method="post">
-  <input type="hidden" name="track[album_id]" value="<%#= @album.id %>">
-  <label for="name">Name:
+<h1>New Track</h1>
+
+<form action="<%= album_tracks_url %>" method="post">
+  <%= auth_token %>
+
+  <label for="name">
+    Name:
     <input id="name" type="text" name="track[name]" value="">
   </label>
 
   <br>
   <br>
 
-  <label for="lyrics">Lyrics:
+  <label for="lyrics">
+    Lyrics:
     <input id="lyrics" type="textarea" name="track[lyrics]" value="">
   </label>
 
   <br>
   <br>
 
-  <label for="status">Status:
+  <label for="status">
+    Status:
     Bonus<input id="status" type="radio" name="track[status]" checked value="Bonus">
     Regular<input id="status" type="radio" name="track[status]" value="Regular">
   </label>

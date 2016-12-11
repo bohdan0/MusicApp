@@ -1,11 +1,11 @@
-<h3>Page of <%= @album.name %> album</h3>
+<h1>Page of <%= @album.name %> album</h1>
 
 <h3>Tracks:</h3>
 
 <ul>
-<% @album.tracks.each do |track| %>
-  <li><a href="<%= track_url(track) %>"><%= track.name %></a></li>
-<% end %>
+  <% @album.tracks.each do |track| %>
+    <li><%= link_to track.name, track_url(track) %></li>
+  <% end %>
 </ul>
 
 <br>
@@ -13,6 +13,6 @@
 <ul>
   <li><%= link_to 'New track', new_album_track_url(@album) %></li>
   <li><%= link_to 'Edit album', edit_album_url(@album) %></li>
-  <li><%= link_to 'Go back', band_url(@album.band) %></li>
+  <li><%= link_to 'Band', band_url(@album.band) %></li>
   <li><%= link_to 'Delete album', album_url(@album), method: :delete %></li>
 </ul>

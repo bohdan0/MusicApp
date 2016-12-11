@@ -1,14 +1,18 @@
-<h3>New Album</h3>
-<form action="<%= albums_url %>" method="post">
-  <input type="hidden" name="album[band_id]" value="<%= @band.id %>">
-  <label for="name">Name:
+<h1>New Album</h1>
+
+<form action="<%= band_albums_url(params[:band_id]) %>" method="post">
+  <%= auth_token %>
+
+  <label for="name">
+    Name:
     <input id="name" type="text" name="album[name]" value="">
   </label>
 
   <br>
   <br>
 
-  <label for="quality">Quality:
+  <label for="quality">
+    Quality:
     Live<input id="quality" type="radio" name="album[quality]" checked value="Live">
     Studio<input id="quality" type="radio" name="album[quality]" value="Studio">
   </label>

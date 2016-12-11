@@ -1,18 +1,23 @@
-<h3>SIGN IN</h3>
+<h1>Sign In</h1>
+
 <form action="<%= sessions_url %>" method="post">
-  <label for="email">Email:
+  <%= auth_token %>
+
+  <label for="email">
+    Email:
     <input id="email" type="text" name="user[email]">
   </label>
 
   <br>
   <br>
 
-  <label for="password">Password:
+  <label for="password">
+    Password:
     <input id="password" type="password" name="user[password]">
   </label>
 
   <br>
   <br>
 
-  <input type="submit" value="Sign in!">
+  <input type="submit" value="Sign In">
 </form>

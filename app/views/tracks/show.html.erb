@@ -1,4 +1,4 @@
-<h3>Page of <%= @track.name %> track</h3>
+<h1>Page of <%= @track.name %> track</h1>
 
 <h3>Status:</h3>
 <%= @track.status %>
@@ -9,7 +9,7 @@
 <br>
 <h3>Links:</h3>
 <ul>
-  <!-- <li><%#= link_to 'New track', new_album_track_url(@album) %></li> -->
+  <li><%= link_to 'New track', new_album_track_url(@track.album) %></li>
   <li><%= link_to 'Edit track', edit_track_url(@track) %></li>
   <li><%= link_to 'Go back', album_url(@track.album) %></li>
   <li><%= link_to 'Delete track', track_url(@track), method: :delete %></li>

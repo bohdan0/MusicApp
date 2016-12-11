@@ -7,11 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% if logged_in? %>
-    <h2>You logged in as a "<%= current_user.email %>"</h2>
-    <%= button_to 'Sign out', session_url(current_user), method: :delete %>
+
+  <% if current_user %>
+    <p>You logged in as a "<%= current_user.email %>"</p>
+    <%= link_to 'My Profile', user_url(current_user) %>
+    <%= button_to 'Sign Out', session_url(current_user), method: :delete %>
   <% else %>
-    <!-- <%#= button_to 'Sign in', new_session_url, method: :get %> -->
+    <%= button_to 'Sign In', new_session_url, method: :get unless current_page?(new_session_url) %>
+    <%= button_to 'Sign Up', new_user_url, method: :get  unless current_page?(new_user_url) %>
+  <% end %>
+
+  <% if flash[:errors] %>
+    <ul>
+      <% flash[:errors].each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
   <% end %>
 
 <%= yield %>
